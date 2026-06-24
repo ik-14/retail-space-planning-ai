@@ -16,7 +16,6 @@ interface DraggableProductProps {
 }
 
 const dragPlane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0)
-const intersectPoint = new THREE.Vector3()
 const DRAG_THRESHOLD = 0.05
 
 export function DraggableProduct({ placement, worldPosition }: DraggableProductProps) {

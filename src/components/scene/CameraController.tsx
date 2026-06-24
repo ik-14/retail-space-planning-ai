@@ -7,10 +7,10 @@ import * as THREE from 'three'
 
 interface CameraControllerProps {
   centerX: number
-  cameraZ: number
+  cameraZ?: number
 }
 
-export function CameraController({ centerX, cameraZ }: CameraControllerProps) {
+export function CameraController({ centerX }: CameraControllerProps) {
   const viewMode = useUIStore((s) => s.viewMode)
   const mode = useInteractionStore((s) => s.mode)
   const { size } = useThree()
