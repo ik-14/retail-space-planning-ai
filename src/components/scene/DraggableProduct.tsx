@@ -30,6 +30,7 @@ export function DraggableProduct({ placement, worldPosition }: DraggableProductP
   const setGhostPosition = useInteractionStore((s) => s.setGhostPosition)
   const cancel = useInteractionStore((s) => s.cancel)
   const setHoveredSlot = useInteractionStore((s) => s.setHoveredSlot)
+  const setProductPointerDown = useInteractionStore((s) => s.setProductPointerDown)
 
   const updatePlacement = usePlanogramStore((s) => s.updatePlacement)
   const planogram = usePlanogramStore((s) => s.activePlanogram)
@@ -74,6 +75,7 @@ export function DraggableProduct({ placement, worldPosition }: DraggableProductP
     downPosRef.current = point.clone()
     hasDraggedRef.current = false
     setDragActive(true)
+    setProductPointerDown(true)
     ;(e.target as any)?.setPointerCapture?.(e.pointerId)
   }
 
@@ -105,6 +107,7 @@ export function DraggableProduct({ placement, worldPosition }: DraggableProductP
     ;(e.target as any)?.releasePointerCapture?.(e.pointerId)
 
     setDragActive(false)
+    setProductPointerDown(false)
 
     if (!hasDraggedRef.current) {
       downPosRef.current = null

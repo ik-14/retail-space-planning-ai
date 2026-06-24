@@ -13,11 +13,12 @@ interface CameraControllerProps {
 export function CameraController({ centerX }: CameraControllerProps) {
   const viewMode = useUIStore((s) => s.viewMode)
   const mode = useInteractionStore((s) => s.mode)
+  const productPointerDown = useInteractionStore((s) => s.productPointerDown)
   const { size } = useThree()
   const controlsRef = useRef(null)
 
   const target: [number, number, number] = [centerX, 1.5, 0]
-  const isDragging = mode.type === 'dragging'
+  const isDragging = mode.type === 'dragging' || productPointerDown
 
   useEffect(() => {
     if (controlsRef.current) {
